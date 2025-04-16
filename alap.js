@@ -8,9 +8,11 @@ function megjelnit(y){
     let sz=""
     for (const elem of y.prizes){
         sz+=`
-        <div>
+        <div class="col-sm-3">
+        <div class="szegely">
         <p>${elem.year}</p>
         <p>${elem.category}</p>
+        </div>
         </div>`
     }
     document.getElementById("keret").innerHTML=sz
