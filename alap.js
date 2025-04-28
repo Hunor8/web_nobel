@@ -1,8 +1,10 @@
+let tomb=[]
 fetch("https://api.nobelprize.org/v1/prize.json")
 .then(x=>x.json())
 .then(y=>megjelenit(y))
 
 function megjelenit(y){
+    tomb=y
     console.log(y)
     let sz=""
     let sorszam=0
@@ -24,4 +26,7 @@ function megjelenit(y){
 
 function reszletKiir(sorszam){
     console.log(sorszam)
+   
+    document.getElementById("modalFej").innerHTML=tomb.prizes[sorszam].year+" "+tomb.prizes[sorszam].category
+    
 }
