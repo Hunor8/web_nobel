@@ -28,5 +28,14 @@ function reszletKiir(sorszam){
     console.log(sorszam)
    
     document.getElementById("modalFej").innerHTML=tomb.prizes[sorszam].year+" "+tomb.prizes[sorszam].category
-    
+    let sz=`<ol>`
+    for (const elem of tomb.prizes[sorszam].laureates){
+
+        sz+=`<li>
+        <p>${elem.firstname} ${elem.sirname}</p>
+        <p>${elem.motivation}</p>
+        </li>`}
+
+        sz+=`</ol>`
+        document.getElementById("modalTorzs").innerHTML=sz
 }
