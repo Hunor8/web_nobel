@@ -1,19 +1,27 @@
-fetch ("https://api.nobelprize.org/v1/prize.json")
+fetch("https://api.nobelprize.org/v1/prize.json")
 .then(x=>x.json())
-.then(y=>megjelnit(y))
+.then(y=>megjelenit(y))
 
-function megjelnit(y){
+function megjelenit(y){
     console.log(y)
-
     let sz=""
-    for (const elem of y.prizes){
+    let sorszam=0
+    for (const elem of y.prizes) {
         sz+=`
         <div class="col-sm-3">
-        <div class="szegely">
-        <p>${elem.year}</p>
-        <p>${elem.category}</p>
+            <div class="szegely" data-bs-toggle="modal" data-bs-target="#myModal" onclick="reszletKiir(${sorszam})" >
+                <p>${elem.year}</p>
+                <p>${elem.category}</p>
+            </div>
         </div>
-        </div>`
+
+        `
+        sorszam++
     }
     document.getElementById("keret").innerHTML=sz
+
+}
+
+function reszletKiir(sorszam){
+    console.log(sorszam)
 }
